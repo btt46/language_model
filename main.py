@@ -116,7 +116,7 @@ def train(model):
             ms_per_batch = (time.time() - start_time) * 1000 / log_interval
             cur_loss = total_loss / log_interval
             ppl = math.exp(cur_loss)
-            print(f"| epoch {epoch} | {batch}/{num_batches} batches |  lr {lr} | ms/batch {ms_per_batch} | loss {cur_loss} | ppl {ppl}")
+            # print(f"| epoch {epoch} | {batch}/{num_batches} batches |  lr {lr} | ms/batch {ms_per_batch} | loss {cur_loss} | ppl {ppl}")
             total_loss = 0
             start_time = time.time()
 
