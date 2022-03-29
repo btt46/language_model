@@ -116,9 +116,7 @@ def train(model):
             ms_per_batch = (time.time() - start_time) * 1000 / log_interval
             cur_loss = total_loss / log_interval
             ppl = math.exp(cur_loss)
-            print(f'| epoch {epoch:3d} | {batch:5d}/{num_batches:5d} batches | '
-                  f'lr {lr:02.2f} | ms/batch {ms_per_batch:5.2f} | '
-                  f'loss {cur_loss:5.2f} | ppl {ppl:8.2f}')
+            print(f'| epoch {epoch:3d} | {batch:5d}/{num_batches:5d} batches | lr {lr:02.2f} | ms/batch {ms_per_batch:5.2f} | loss {cur_loss:5.2f} | ppl {ppl:8.2f}')
             total_loss = 0
             start_time = time.time()
 
@@ -148,8 +146,7 @@ for epoch in range(1, epochs + 1):
     val_ppl = math.exp(val_loss)
     elapsed = time.time() - epoch_start_time
     print('-' * 89)
-    print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | '
-        f'valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f}')
+    print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f}')
     print('-' * 89)
 
     if val_loss < best_val_loss:
