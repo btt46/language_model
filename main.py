@@ -146,8 +146,7 @@ for epoch in range(1, epochs + 1):
     val_ppl = math.exp(val_loss)
     elapsed = time.time() - epoch_start_time
     print('-' * 89)
-    print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | '
-          f'valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f}')
+    print(f'| end of epoch {epoch:3d} | time: {elapsed:5.2f}s | valid loss {val_loss:5.2f} | valid ppl {val_ppl:8.2f}')
     print('-' * 89)
 
     if val_loss < best_val_loss:
