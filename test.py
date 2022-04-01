@@ -16,8 +16,6 @@ vocab = torch.load('vocab_obj.pth')
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-print(vocab("November"))
-
 text = ("After Abraham Lincoln won the November 1860 presidential "
         "election on an anti-slavery platform, an initial seven "
         "slave states declared their secession from the country "
@@ -27,6 +25,8 @@ text = ("After Abraham Lincoln won the November 1860 presidential "
         "inauguration.") 
 
 tokenizer = get_tokenizer('basic_english')
+
+print(vocab(tokenizer("November")))
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
