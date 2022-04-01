@@ -43,6 +43,6 @@ model.eval()
 src_mask = generate_square_subsequent_mask(56).to(device)
 
 seq = "After Abraham Lincoln won the [MASK] 1860 presidential "
-result = model(torch.tensor(vocab(tokenizer(seq))).to(device),[])
+result = model(torch.tensor(vocab(tokenizer(seq))).to(device),src_mask)
 output_flat = result.view(-1, ntokens)
 print(len(output_flat), len(output_flat[0]))
