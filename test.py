@@ -41,4 +41,4 @@ model.load_state_dict(torch.load(PATH))
 model.eval()
 
 result = model(torch.tensor(vocab(tokenizer("After Abraham Lincoln won the [MASK] 1860 presidential "))))
-print(result)
+print(result, "[MASK]")
