@@ -26,7 +26,7 @@ text = ("After Abraham Lincoln won the November 1860 presidential "
 
 tokenizer = get_tokenizer('basic_english')
 
-print(vocab(tokenizer("November [MASK]")))
+print(vocab(tokenizer("After Abraham Lincoln won the [MASK] 1860 presidential ")))
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
@@ -40,3 +40,5 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 model.eval()
 
+result = model(torch.tensor(vocab(tokenizer("After Abraham Lincoln won the [MASK] 1860 presidential "))))
+print(result)
