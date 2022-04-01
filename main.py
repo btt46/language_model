@@ -154,3 +154,6 @@ for epoch in range(1, epochs + 1):
         best_model = copy.deepcopy(model)
 
     scheduler.step()  
+
+PATH = "best_model.pt"
+torch.save(best_model.state_dict(), PATH)
