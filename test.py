@@ -16,7 +16,7 @@ vocab = torch.load('vocab_obj.pth')
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-print(vocab)
+print(vocab("November"))
 
 text = ("After Abraham Lincoln won the November 1860 presidential "
         "election on an anti-slavery platform, an initial seven "
