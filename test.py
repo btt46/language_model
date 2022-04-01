@@ -26,7 +26,7 @@ text = ("After Abraham Lincoln won the November 1860 presidential "
 
 tokenizer = get_tokenizer('basic_english')
 
-print(vocab(tokenizer("November")))
+print(vocab(tokenizer("November [MASK]")))
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
