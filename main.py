@@ -71,7 +71,7 @@ def get_batch(source, i):
     """
     seq_len = min(bptt, len(source) - 1 - i)
     data = source[i:i+seq_len]
-    target = source[i+1:i+1+seq_len].reshape(-1)
+    target = source[i+1 : i+1+seq_len].reshape(-1)
     return data,target
 
 ## Initiate an instance
@@ -105,6 +105,7 @@ def train(model):
         batch_size = data.size(0)
         if batch_size != bptt:
             src_mask = src_mask[:batch_size, :batch_size]
+        print(data, src_mask)
         output = model(data, src_mask)
         loss = criterion(output.view(-1, ntokens), targets)
 
