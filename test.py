@@ -43,4 +43,5 @@ model.eval()
 src_mask = generate_square_subsequent_mask(35).to(device)
 src_mask = src_mask[:8, :8]
 result = model(torch.tensor(vocab(tokenizer("After Abraham Lincoln won the [MASK] 1860 presidential "))).to(device),src_mask)
+output_flat = result.view(-1, ntokens)
 print(result)
