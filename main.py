@@ -13,8 +13,11 @@ from model import *
 
 train_iter = WikiText2(split='train')
 tokenizer = get_tokenizer('basic_english')
-vocab = build_vocab_from_iterator(map(tokenizer, train_iter), specials=['<unk>'])
-vocab.set_default_index(vocab['<unk>'])
+vocab_obj = build_vocab_from_iterator(map(tokenizer, train_iter), specials=['<unk>'])
+vocab_obj.set_default_index(vocab_obj['<unk>'])
+
+torch.save(vocab_obj, 'vocab_obj.pth')
+vocab = torch.load('vocab_obj.pth')
 
 def data_process(raw_text_iter):
     """
