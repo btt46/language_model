@@ -40,7 +40,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 model.eval()
 
-src_mask = generate_square_subsequent_mask(35).to(device)
+src_mask = generate_square_subsequent_mask(56).to(device)
 
 result = model(torch.tensor(vocab(tokenizer(text))).to(device),src_mask)
 output_flat = result.view(-1, ntokens)
