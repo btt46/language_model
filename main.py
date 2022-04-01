@@ -105,7 +105,7 @@ def train(model):
         batch_size = data.size(0)
         if batch_size != bptt:
             src_mask = src_mask[:batch_size, :batch_size]
-        print(data, src_mask)
+        
         output = model(data, src_mask)
         loss = criterion(output.view(-1, ntokens), targets)
 
