@@ -40,7 +40,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 model.eval()
 
-src_mask = generate_square_subsequent_mask(56).to(device)
+src_mask = generate_square_subsequent_mask(8).to(device)
 
 seq = "After Abraham Lincoln won the [MASK] 1860 presidential "
 result = model(torch.tensor(vocab(tokenizer(seq))).to(device),src_mask)
