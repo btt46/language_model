@@ -43,13 +43,13 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 
 
-seq = "After Abraham Lincoln won the November 1860 presidential [MASK] on an anti-slavery platform, an initial seven "
+seq = "War broke out [MASK] April 1861"
 input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 print(input_seq)
 
 def predict(model, input_seq):
         model.eval()
-        src_mask = generate_square_subsequent_mask(17).to(device)
+        src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
         out = model(input_seq.to(device), src_mask.to(device))
         output = out.view(-1, ntokens)
         return output
