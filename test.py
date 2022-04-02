@@ -14,6 +14,8 @@ PATH = "best_model.pt"
 torch.load(PATH)
 vocab = torch.load('vocab_obj.pth')
 
+print(vocab)
+
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
 text = ("After Abraham Lincoln won the November 1860 presidential "
