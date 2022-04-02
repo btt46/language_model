@@ -57,7 +57,7 @@ def predict(model, input_seq):
 out = predict(model, input_seq)
 print(len(out), len(out[0]))
 print(out)
-for i in len(out):
+for i in range(len(out)):
         predict_val = out[i]
         probs = torch.softmax(predict_val , dim=-1) 
         word_idx = torch.multinomial(probs, num_samples=1).item()
