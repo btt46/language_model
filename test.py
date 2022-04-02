@@ -1,4 +1,5 @@
 import math
+from numpy import size
 import torch
 from torch import ThroughputBenchmark, nn, Tensor
 import torch.nn.functional as F 
@@ -54,6 +55,6 @@ def predict(model, input_seq):
         return output
 
 out = predict(model, input_seq)
-
+print(len(out), len(out[0]))
 print(out)
 
