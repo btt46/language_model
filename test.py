@@ -50,5 +50,5 @@ def predict(model, input_seq):
         return output
 
 out = predict(model, input_seq)
-print(out)
+print(torch.softmax(out, dim=-1))
 
