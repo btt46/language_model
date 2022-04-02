@@ -55,7 +55,6 @@ class TransformerModel(nn.Module):
         src = self.pos_encoder(src)
         output = self.transformer_encoder(src, src_mask)
         output = self.decoder(output)
-        print(output)
         return output
 
 def generate_square_subsequent_mask(sz):
