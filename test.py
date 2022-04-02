@@ -43,7 +43,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 
 
-seq = "War broke out [MASK] April 1861"
+seq = "War broke [MASK] in April 1861"
 input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 print(input_seq)
 
