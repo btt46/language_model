@@ -45,10 +45,9 @@ def predict(model, input_seq):
         model.eval()
         src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
         out = model(input_seq.to(device), src_mask.to(device))
-        # output = out.view(-1, ntokens)
-        output = out.topk(1).indices.view(-1)
-        return output
+        
+        return out
 
 out = predict(model, input_seq)
-print(torch.softmax(out, dim=-1))
+
 
