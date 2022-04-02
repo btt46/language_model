@@ -55,8 +55,7 @@ def predict(model, input_seq):
         return output
 
 out = predict(model, input_seq)
-print(len(out), len(out[0]))
-print(out)
+print(seq)
 for i in range(len(out)):
         predict_val = out[i]
         probs = torch.softmax(predict_val , dim=-1) 
