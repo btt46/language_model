@@ -45,3 +45,5 @@ print(seq)
 out = predict(model, input_seq)
 print(out.shape)
 
+out = out.view(-1, ntokens)
+print(out.shape)
