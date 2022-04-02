@@ -57,4 +57,6 @@ def predict(model, input_seq):
 out = predict(model, input_seq)
 print(len(out), len(out[0]))
 print(out)
-
+probs = torch.softmax(out[:, -1] , dim=-1) 
+prediction = torch.multinomial(probs, num_samples=1).item()
+print(prediction)
