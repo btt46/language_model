@@ -17,6 +17,7 @@ vocab_obj = build_vocab_from_iterator(map(tokenizer, train_iter), specials=['<un
 vocab_obj.set_default_index(vocab_obj['<unk>'])
 
 torch.save(vocab_obj, 'vocab_obj.pth')
+print(vocab_obj)
 vocab = torch.load('vocab_obj.pth')
 
 def data_process(raw_text_iter):
