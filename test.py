@@ -45,15 +45,10 @@ def predict(model, input_seq):
         model.eval()
         src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
         out = model(input_seq.to(device), src_mask.to(device))
-        output = out.view(-1, ntokens)
+        # output = out.view(-1, ntokens)
+        output = out.topk(1).indices.view(-1)
         return output
 
 out = predict(model, input_seq)
-print(seq)
-for i in range(len(out)):
-        predict_val = out[i]
-        probs = torch.softmax(predict_val , dim=-1) 
-        word_idx = torch.multinomial(probs, num_samples=1).item()
-        if i < 10:
-                print(word_idx, vocab.lookup_token(word_idx))
+
 
