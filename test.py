@@ -49,7 +49,7 @@ print(input_seq)
 
 def predict(model, input_seq):
         model.eval()
-        src_mask = generate_square_subsequent_mask(8).to(device)
+        src_mask = generate_square_subsequent_mask(17).to(device)
         out = model(input_seq.to(device), src_mask.to(device))
         output = out.view(-1, ntokens)
         return output
