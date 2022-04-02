@@ -1,6 +1,6 @@
 import math
 import torch
-from torch import nn, Tensor
+from torch import ThroughputBenchmark, nn, Tensor
 import torch.nn.functional as F 
 from torch.nn import TransformerEncoder, TransformerEncoderLayer
 from torch.utils.data import dataset
@@ -38,11 +38,19 @@ dropout = 0.2  # dropout probability
 model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(device)
 
 model.load_state_dict(torch.load(PATH))
-model.eval()
 
-src_mask = generate_square_subsequent_mask(8).to(device)
 
-seq = "After Abraham Lincoln won the [MASK] 1860 presidential "
-output = model(torch.tensor(vocab(tokenizer(seq))).to(device),src_mask)
-output_flat = output.view(-1, ntokens)
-print(len(output_flat), len(output_flat[0]))
+seq = "After Abraham Lincoln won the [MASK] 1860 presidential"
+input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
+
+def predict(model, input_seq):
+        model.eval()
+        src_mask = generate_square_subsequent_mask(35).to(device)
+        out = model(input_seq.to(device), src_mask.to(device))
+        out = out.topk(1).indices.view(-1)
+        return out
+
+out = predict(model, input_seq)
+print(tokenizer.decode(out))
+
+
