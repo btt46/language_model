@@ -28,7 +28,7 @@ text = ("After Abraham Lincoln won the November 1860 presidential "
 
 tokenizer = get_tokenizer('basic_english')
 
-print(vocab(tokenizer("After Abraham Lincoln won the [MASK] 1860 presidential ")))
+
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
@@ -44,6 +44,7 @@ model.load_state_dict(torch.load(PATH))
 
 seq = "After Abraham Lincoln won the [MASK] 1860 presidential"
 input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
+print(input_seq)
 
 def predict(model, input_seq):
         model.eval()
