@@ -32,7 +32,7 @@ model.load_state_dict(torch.load(PATH))
 
 
 seq = "The man went to the store with [MASK] dog"
-input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
+input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 print(input_seq)
 
 def predict(model, input_seq):
