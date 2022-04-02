@@ -19,13 +19,7 @@ print(vocab.get_itos()[:10])
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-text = ("After Abraham Lincoln won the November 1860 presidential "
-        "election on an anti-slavery platform, an initial seven "
-        "slave states declared their secession from the country "
-        "to form the Confederacy. War broke out in April 1861 "
-        "when secessionist forces attacked Fort Sumter in South "
-        "Carolina, just over a month after Lincoln's "
-        "inauguration.") 
+
 
 tokenizer = get_tokenizer('basic_english')
 
@@ -43,7 +37,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 
 
-seq = "War broke [MASK] in April 1861"
+seq = "The man went to [MASK] store with his dog"
 input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 print(input_seq)
 
