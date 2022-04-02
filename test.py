@@ -45,7 +45,7 @@ input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 
 def predict(model, input_seq):
         model.eval()
-        src_mask = generate_square_subsequent_mask(35).to(device)
+        src_mask = generate_square_subsequent_mask(8).to(device)
         out = model(input_seq.to(device), src_mask.to(device))
         out = out.topk(1).indices.view(-1)
         return out
