@@ -43,10 +43,8 @@ def predict(model, input_seq):
         return out
 print(seq)
 out = predict(model, input_seq)
-print(out.shape)
 
-out = out.view(-1, ntokens)
-print(out.shape)
 
 for i in range(10):
         idx = max(out[i])
+        print(idx)
