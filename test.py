@@ -60,5 +60,6 @@ for i in range(len(out)):
         predict_val = out[i]
         probs = torch.softmax(predict_val , dim=-1) 
         word_idx = torch.multinomial(probs, num_samples=1).item()
-        print(word_idx, vocab.lookup_token(word_idx))
+        if i < 10:
+                print(word_idx, vocab.lookup_token(word_idx))
 
