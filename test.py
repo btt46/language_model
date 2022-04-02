@@ -49,5 +49,5 @@ def predict(model, input_seq):
         return out
 
 out = predict(model, input_seq)
-print(out)
+print(out.shape)
 
