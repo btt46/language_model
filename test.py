@@ -15,7 +15,7 @@ PATH = "best_model.pt"
 torch.load(PATH)
 vocab = torch.load('vocab_obj.pth')
 
-print(vocab.lookup_token(8))
+print(vocab.get_itos()[:10])
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
