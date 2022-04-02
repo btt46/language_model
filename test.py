@@ -15,15 +15,9 @@ PATH = "best_model.pt"
 torch.load(PATH)
 vocab = torch.load('vocab_obj.pth')
 
-print(vocab.get_itos()[:10])
-
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
-
 tokenizer = get_tokenizer('basic_english')
-
-
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
@@ -47,7 +41,7 @@ def predict(model, input_seq):
         out = model(input_seq.to(device), src_mask.to(device))
         
         return out
-
+print(seq)
 out = predict(model, input_seq)
 print(out.shape)
 
