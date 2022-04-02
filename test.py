@@ -43,7 +43,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 
 
-seq = "After Abraham Lincoln won the [MASK] 1860 presidential"
+seq = "After Abraham Lincoln won the November 1860 presidential [MASK] on an anti-slavery platform, an initial seven "
 input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
 print(input_seq)
 
