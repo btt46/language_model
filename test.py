@@ -39,7 +39,7 @@ data = data_process(seqs, vocab, tokenizer)
 # batch_data = batchify(data, 1, device)
 # # print(batch_data)
 
-print(torch.tensor(vocab(tokenizer("I have watched [mask] movie and it was awesome"))))
+print(torch.tensor(vocab(tokenizer("I have watched this [mask] and it was awesome"))))
 print(seqs)
 def predict(model, input_seq):
         model.eval()
@@ -55,7 +55,7 @@ out = m(out)
 # print(seqs)
 # print(len(out))
 
-predicts = out[9].topk(20)
+predicts = out[4].topk(20)
 # print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
