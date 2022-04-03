@@ -1,14 +1,7 @@
-import math
-from numpy import size
 import torch
-from torch import ThroughputBenchmark, nn, Tensor
-import torch.nn.functional as F 
-from torch.nn import TransformerEncoder, TransformerEncoderLayer
-from torch.utils.data import dataset
-
-from torchtext.datasets import WikiText2
+from torch import nn
 from torchtext.data.utils import get_tokenizer
-from torchtext.vocab import build_vocab_from_iterator
+
 
 from model import *
 PATH = "best_model.pt"
