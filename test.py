@@ -46,5 +46,5 @@ print(out[0].shape, ntokens)
 print(out)
 
 for i in range(10):
-        predict_idx = out[i].toList().index(max(out))
+        predict_idx = out[i].tolist().index(max(out))
         print(vocab[predict_idx])
