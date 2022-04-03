@@ -53,4 +53,4 @@ print(seqs)
 print(len(out))
 
 predicts = out[5].topk(6)
-print(predicts)
+print(predicts['indices'])
