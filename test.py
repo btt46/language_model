@@ -49,6 +49,7 @@ def predict(model, input_seq):
 out = predict(model, batch_data)
 m = nn.LogSoftmax()
 out = m(out)
+print(vocab.lookup_token(2))
 print(seqs)
 print(len(out))
 
