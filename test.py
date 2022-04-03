@@ -48,4 +48,4 @@ print(out)
 for i in range(5):
         predict_idx = torch.argmax(out[i])
         print(out[i], torch.argmax(out[i]))
-        print(vocab.lookup_indices(predict_idx.item()))
+        print(vocab.lookup_token(predict_idx.item()))
