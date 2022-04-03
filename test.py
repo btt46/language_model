@@ -47,4 +47,5 @@ print(out)
 out = out.tolist()
 for i in range(10):
         predict_idx = out[i].index(max(out))
-        print(vocab.lookup_indices(predict_idx))
+        print(out[i])
+        # print(vocab.lookup_indices(predict_idx))
