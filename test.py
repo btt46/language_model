@@ -47,5 +47,5 @@ print(out)
 
 for i in range(10):
         # predict_idx = out[i].index(max(out))
-        print(out[i])
+        print(out[i], torch.argmax(out[i]))
         # print(vocab.lookup_indices(predict_idx))
