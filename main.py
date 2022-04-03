@@ -18,7 +18,7 @@ vocab_obj = build_vocab_from_iterator(map(tokenizer, train_iter), specials=['<un
 vocab_obj.set_default_index(vocab_obj['<unk>'])
 
 torch.save(vocab_obj, 'vocab_obj.pth')
-print(vocab_obj)
+
 vocab = torch.load('vocab_obj.pth')
 
 # train_iter was consumed by the process of building the vocab,
@@ -27,6 +27,8 @@ train_iter, val_iter, test_iter = WikiText2()
 train_data = data_process(train_iter, vocab, tokenizer)
 val_data = data_process(val_iter, vocab, tokenizer)
 test_data = data_process(test_iter, vocab, tokenizer)
+
+print(test_iter)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
