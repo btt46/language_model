@@ -32,8 +32,8 @@ print(test_iter)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-batch_size = 20
-eval_batch_size = 10
+batch_size = 128
+eval_batch_size = 128
 train_data = batchify(train_data, batch_size, device)
 val_data = batchify(val_data, eval_batch_size, device)
 test_data = batchify(test_data, eval_batch_size, device)
@@ -43,10 +43,10 @@ bptt = 35
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
-emsize = 200  # embedding dimension
-d_hid = 200  # dimension of the feedforward network model in nn.TransformerEncoder
-nlayers = 2  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
-nhead = 2  # number of heads in nn.MultiheadAttention
+emsize = 512  # embedding dimension
+d_hid = 512  # dimension of the feedforward network model in nn.TransformerEncoder
+nlayers = 8  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
+nhead = 8  # number of heads in nn.MultiheadAttention
 dropout = 0.2  # dropout probability
 model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(device)
 
