@@ -36,9 +36,10 @@ batch_data = batchify(data, 1, device)
 
 def predict(model, input_seq):
         model.eval()
-        src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
-        out = model(input_seq.to(device), src_mask.to(device)) 
-        out = out.view(-1, ntokens)
+        with torch.no_grad():
+                src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
+                out = model(input_seq.to(device), src_mask.to(device)) 
+                out = out.view(-1, ntokens)
         return out
 out = predict(model, batch_data)
 print(out)
