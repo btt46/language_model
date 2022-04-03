@@ -40,3 +40,4 @@ def predict(model, input_seq):
         out = model(input_seq.to(device), src_mask.to(device)) 
         return out
 out = predict(model, batch_data)
+print(out)
