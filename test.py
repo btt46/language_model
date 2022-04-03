@@ -37,5 +37,5 @@ def predict(model, input_seq):
 print(seq)
 out = predict(model, input_seq)
 out = out.view(-1, ntokens)
-m = nn.Softmax(dim=1)
+m = nn.LogSoftmax()
 print(m(out))
