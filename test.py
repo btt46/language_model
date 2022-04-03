@@ -42,5 +42,5 @@ def predict(model, input_seq):
                 out = out.view(-1, ntokens)
         return out
 out = predict(model, batch_data)
-print(out[0][0].shape, ntokens)
+print(out[0].shape, ntokens)
 print(out)
