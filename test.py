@@ -49,7 +49,7 @@ def predict(model, input_seq):
                 out = out.view(-1, ntokens)
         return out
 out = predict(model, data)
-m = nn.softmax(dim=1)
+m = nn.Softmax(dim=1)
 out = m(out)
 
 # print(seqs)
