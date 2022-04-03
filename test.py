@@ -28,7 +28,7 @@ model.load_state_dict(torch.load(PATH))
 
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
-seq = "I have watched this [mask] and it was awesome"
+seq = "I have watched this movie and it was awesome"
 seqs = [
                seq
         ]
