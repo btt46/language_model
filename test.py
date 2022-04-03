@@ -36,8 +36,8 @@ seqs = [
 # input_seq = torch.cat(tuple(filter(lambda t: t.numel() > 0, input_seq)))
 # print(input_seq)
 data = data_process(seqs, vocab, tokenizer)
-batch_data = batchify(data, 1, device)
-print(batch_data)
+# batch_data = batchify(data, 1, device)
+# # print(batch_data)
 
 print(torch.tensor(vocab(tokenizer("I have watched [mask] movie and it was awesome"))))
 
@@ -48,7 +48,7 @@ def predict(model, input_seq):
                 out = model(input_seq.to(device), src_mask.to(device)) 
                 out = out.view(-1, ntokens)
         return out
-out = predict(model, batch_data)
+out = predict(model, data)
 m = nn.LogSoftmax()
 out = m(out)
 
