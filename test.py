@@ -29,7 +29,7 @@ model.load_state_dict(torch.load(PATH))
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
 seqs = [
-                "[mask] man went to the store with his dog",
+                "The man went to the store with his [mask]",
                 "I have watched this [mask] and it was awesome"
         ]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
@@ -52,7 +52,7 @@ out = m(out)
 print(seqs)
 print(len(out))
 
-predicts = out[3].topk(10)
+predicts = out[8].topk(10)
 print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
