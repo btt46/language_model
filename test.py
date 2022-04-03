@@ -29,7 +29,7 @@ model.load_state_dict(torch.load(PATH))
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
 seqs = [
-                "[mask] have watched this movie and it was awesome"
+                "I have watched this [mask] and it was awesome"
         ]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
 # print(input_seq)
@@ -39,7 +39,7 @@ data = data_process(seqs, vocab, tokenizer)
 batch_data = batchify(data, 1, device)
 # print(batch_data)
 
-print(torch.tensor(vocab(tokenizer("I have watched this [mask] and it was awesome"))))
+print(torch.tensor(vocab(tokenizer("I have watched [mask] movie and it was awesome"))))
 
 def predict(model, input_seq):
         model.eval()
