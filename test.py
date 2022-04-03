@@ -30,7 +30,7 @@ model.load_state_dict(torch.load(PATH))
 # seqs = ["I have watched this [mask] and it was awesome"]
 seqs = [
                 "The man went to the [mask] with his dog",
-                " have watched this [mask] and it was awesome"
+                "I have watched this [mask] and it was awesome"
         ]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
 # print(input_seq)
