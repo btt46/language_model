@@ -29,7 +29,7 @@ model.load_state_dict(torch.load(PATH))
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
 seqs = [
-                "I have watched this [mask] and it was awesome"
+                "The gold dollar or gold one @-@ dollar piece was a coin struck as a regular issue by the [mask] States Bureau of the Mint from 1849 to 1889 ."
         ]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
 # print(input_seq)
@@ -55,7 +55,7 @@ out = m(out)
 # print(seqs)
 # print(len(out))
 
-predicts = out[4].topk(20)
+predicts = out[19].topk(10)
 # print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
