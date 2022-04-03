@@ -25,7 +25,8 @@ model.load_state_dict(torch.load(PATH))
 
 
 seq = "The man went to the store with [MASK] dog"
-input_seq = torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)
+input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
+input_seq = torch.cat(tuple(filter(lambda t: t.numel() > 0, input_seq)))
 print(input_seq)
 
 def predict(model, input_seq):
@@ -37,5 +38,5 @@ def predict(model, input_seq):
 print(seq)
 out = predict(model, input_seq)
 out = out.view(-1, ntokens)
-m = nn.LogSoftmax(dim=1)
-print(m(out[0]))
+m = nn.LogSoftmax()
+print(m(out))
