@@ -39,6 +39,8 @@ data = data_process(seqs, vocab, tokenizer)
 batch_data = batchify(data, 1, device)
 print(batch_data)
 
+print(torch.tensor(vocab(tokenizer("I have watched this [mask] and it was awesome"))))
+
 def predict(model, input_seq):
         model.eval()
         with torch.no_grad():
