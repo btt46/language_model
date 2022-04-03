@@ -46,6 +46,6 @@ print(seqs)
 print(len(out))
 
 for i in range(len(out)):
-        predict_idx = torch.argmax(out[3])
+        predict_idx = torch.argmax(out[i])
 
         print(vocab.lookup_token(predict_idx.item()))
