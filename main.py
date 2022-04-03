@@ -32,8 +32,6 @@ print(test_iter)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-
-
 batch_size = 20
 eval_batch_size = 10
 train_data = batchify(train_data, batch_size, device)
@@ -42,7 +40,6 @@ test_data = batchify(test_data, eval_batch_size, device)
 
 ## Functions to generate input and target sequence
 bptt = 35
-
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
