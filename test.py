@@ -37,6 +37,7 @@ seqs = [
 # print(input_seq)
 data = data_process(seqs, vocab, tokenizer)
 batch_data = batchify(data, 1, device)
+print(batch_data)
 
 def predict(model, input_seq):
         model.eval()
@@ -48,7 +49,7 @@ def predict(model, input_seq):
 out = predict(model, batch_data)
 m = nn.LogSoftmax()
 out = m(out)
-print(vocab.lookup_token(21))
+
 print(seqs)
 print(len(out))
 
