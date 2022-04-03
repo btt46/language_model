@@ -26,6 +26,7 @@ model.load_state_dict(torch.load(PATH))
 
 seq = "The man went to the store with [MASK] dog"
 input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
+print(input_seq)
 input_seq = torch.cat(tuple(filter(lambda t: t.numel() > 0, input_seq)))
 print(input_seq)
 
