@@ -18,8 +18,8 @@ tokenizer = get_tokenizer('basic_english')
 ntokens = len(vocab)  # size of vocabulary
 emsize = 512  # embedding dimension
 d_hid = 512  # dimension of the feedforward network model in nn.TransformerEncoder
-nlayers = 2  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
-nhead = 2  # number of heads in nn.MultiheadAttention
+nlayers = 8  # number of nn.TransformerEncoderLayer in nn.TransformerEncoder
+nhead = 8  # number of heads in nn.MultiheadAttention
 dropout = 0.2  # dropout probability
 model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(device)
 
