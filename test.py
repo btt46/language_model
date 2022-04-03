@@ -34,10 +34,9 @@ seqs = ["The man went to the store with [MASK] dog"]
 data = data_process(seqs, vocab, tokenizer)
 batch_data = batchify(data, 1, device)
 
-
 def predict(model, input_seq):
         model.eval()
         src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
         out = model(input_seq.to(device), src_mask.to(device)) 
         return out
-
+out = predict(model, batch_data)
