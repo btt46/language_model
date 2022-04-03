@@ -44,7 +44,7 @@ def predict(model, input_seq):
 out = predict(model, batch_data)
 print(out[0].shape, ntokens)
 print(out)
-
+out = out.tolist()
 for i in range(10):
-        predict_idx = out[i].tolist().index(max(out))
+        predict_idx = out[i].index(max(out))
         print(vocab[predict_idx])
