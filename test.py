@@ -26,7 +26,7 @@ model = TransformerModel(ntokens, emsize, nhead, d_hid, nlayers, dropout).to(dev
 model.load_state_dict(torch.load(PATH))
 
 
-seqs = ["The man went to the store [MASK] his dog"]
+seqs = ["The man went [MASK] the store with his dog"]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
 # print(input_seq)
 # input_seq = torch.cat(tuple(filter(lambda t: t.numel() > 0, input_seq)))
@@ -43,6 +43,7 @@ def predict(model, input_seq):
         return out
 out = predict(model, batch_data)
 print(seqs)
+
 for i in range(5):
         predict_idx = torch.argmax(out[i])
 
