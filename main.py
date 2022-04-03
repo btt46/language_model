@@ -107,7 +107,7 @@ def evaluate(model, eval_data):
     return total_loss / (len(eval_data) - 1)
 
 best_val_loss = float('inf')
-epochs = 3
+epochs = 15
 best_model = None
 
 for epoch in range(1, epochs + 1):
