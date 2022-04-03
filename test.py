@@ -28,8 +28,9 @@ model.load_state_dict(torch.load(PATH))
 
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
+seq = "The gold dollar or gold one @-@ dollar piece was a coin struck as a regular issue by the [mask] States Bureau of the Mint from 1849 to 1889 ."
 seqs = [
-                "The gold dollar or gold one @-@ dollar piece was a coin struck as a regular issue by the [mask] States Bureau of the Mint from 1849 to 1889 ."
+               seq
         ]
 # input_seq = [torch.tensor(vocab(tokenizer(seq)), dtype=torch.long)]
 # print(input_seq)
@@ -39,7 +40,7 @@ data = data_process(seqs, vocab, tokenizer)
 # batch_data = batchify(data, 1, device)
 # # print(batch_data)
 
-print(torch.tensor(vocab(tokenizer("I have watched this [mask] and it was awesome"))))
+print(torch.tensor(vocab(tokenizer(seq))))
 print(seqs)
 def predict(model, input_seq):
         model.eval()
