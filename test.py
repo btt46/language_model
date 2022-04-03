@@ -43,7 +43,7 @@ def predict(model, input_seq):
         return out
 out = predict(model, batch_data)
 print(seqs)
-
+print(len(out))
 for i in range(5):
         predict_idx = torch.argmax(out[i])
 
