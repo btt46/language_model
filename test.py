@@ -37,7 +37,7 @@ seqs = [
 # print(input_seq)
 data = data_process(seqs, vocab, tokenizer)
 batch_data = batchify(data, 1, device)
-# print(batch_data)
+print(batch_data)
 
 print(torch.tensor(vocab(tokenizer("I have watched [mask] movie and it was awesome"))))
 
@@ -52,10 +52,10 @@ out = predict(model, batch_data)
 m = nn.LogSoftmax()
 out = m(out)
 
-print(seqs)
-print(len(out))
+# print(seqs)
+# print(len(out))
 
 predicts = out[0].topk(10)
-print(predicts[1])
+# print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
