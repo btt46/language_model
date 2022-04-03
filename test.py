@@ -28,7 +28,7 @@ model.load_state_dict(torch.load(PATH))
 
 # seqs = ["The man went to the store with his dog"]
 # seqs = ["I have watched this [mask] and it was awesome"]
-seq = "The gold dollar or gold one @-@ dollar piece was [mask] coin struck as a regular issue by the United States Bureau of the Mint from 1849 to 1889 ."
+seq = "The gold dollar or gold one @-@ dollar piece was a coin struck as a regular issue by the United States Bureau of the Mint from 1849 to 1889 ."
 seqs = [
                seq
         ]
@@ -56,7 +56,7 @@ out = m(out)
 # print(seqs)
 # print(len(out))
 
-predicts = out[1].topk(10)
+predicts = out[19].topk(10)
 # print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
