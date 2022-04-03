@@ -44,9 +44,5 @@ def predict(model, input_seq):
 print(seq)
 out = predict(model, input_seq)
 
-out = out.view(-1, ntokens)
-print(out.shape)
-
-for i in range(10):
-        idx = max(out[i])
-        print(idx)
+m = nn.Softmax(dim=1)
+print(m(out))
