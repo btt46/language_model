@@ -45,9 +45,7 @@ print(seqs)
 def predict(model, input_seq):
         model.eval()
         with torch.no_grad():
-                # src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
-                src_mask = torch.zeros(1,len(input_seq))
-                src_mask[0][4] = float("-inf")
+                src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
                 out = model(input_seq.to(device), src_mask.to(device)) 
                 out = out.view(-1, ntokens)
         return out
