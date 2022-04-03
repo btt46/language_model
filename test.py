@@ -40,7 +40,7 @@ data = data_process(seqs, vocab, tokenizer)
 # # print(batch_data)
 
 print(torch.tensor(vocab(tokenizer("I have watched [mask] movie and it was awesome"))))
-
+print(seqs)
 def predict(model, input_seq):
         model.eval()
         with torch.no_grad():
