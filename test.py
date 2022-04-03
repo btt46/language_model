@@ -44,7 +44,7 @@ def predict(model, input_seq):
 out = predict(model, batch_data)
 print(seqs)
 print(len(out))
-for i in range(5):
-        predict_idx = torch.argmax(out[i])
 
-        print(vocab.lookup_token(predict_idx.item()))
+predict_idx = torch.argmax(out[3])
+
+print(vocab.lookup_token(predict_idx.item()))
