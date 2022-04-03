@@ -43,10 +43,11 @@ def predict(model, input_seq):
                 out = out.view(-1, ntokens)
         return out
 out = predict(model, batch_data)
+m = nn.LogSoftmax()
+out = m(out)
 print(seqs)
 print(len(out))
 
 for i in range(len(out)):
         predict_idx = torch.argmax(out[i])
-
         print(vocab.lookup_token(predict_idx.item()))
