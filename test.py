@@ -46,6 +46,6 @@ print(out[0].shape, ntokens)
 print(out)
 
 for i in range(5):
-        # predict_idx = out[i].index(max(out))
+        predict_idx = torch.argmax(out[i])
         print(out[i], torch.argmax(out[i]))
-        # print(vocab.lookup_indices(predict_idx))
+        print(vocab.lookup_indices(predict_idx.item()))
