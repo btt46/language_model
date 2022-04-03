@@ -54,3 +54,5 @@ print(len(out))
 
 predicts = out[5].topk(6)
 print(predicts[1])
+for i in predicts[1]:
+        print(vocab.lookup_token(i))
