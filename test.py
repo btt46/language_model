@@ -55,7 +55,7 @@ out = m(out)
 # print(seqs)
 # print(len(out))
 
-predicts = out[3].topk(20)
+predicts = out[9].topk(20)
 # print(predicts[1])
 for i in predicts[1]:
         print(vocab.lookup_token(i))
