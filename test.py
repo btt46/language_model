@@ -42,4 +42,5 @@ def predict(model, input_seq):
                 out = out.view(-1, ntokens)
         return out
 out = predict(model, batch_data)
+print(len(out[0][0]), ntokens)
 print(out)
