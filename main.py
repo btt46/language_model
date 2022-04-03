@@ -4,6 +4,7 @@ from torch import nn, Tensor
 import torch.nn.functional as F 
 from torch.nn import TransformerEncoder, TransformerEncoderLayer
 from torch.utils.data import dataset
+from process import *
 
 from torchtext.datasets import WikiText2
 from torchtext.data.utils import get_tokenizer
@@ -20,60 +21,26 @@ torch.save(vocab_obj, 'vocab_obj.pth')
 print(vocab_obj)
 vocab = torch.load('vocab_obj.pth')
 
-def data_process(raw_text_iter):
-    """
-        Converts raw text into a flat Tensor.
-    """
-    data = [torch.tensor(vocab(tokenizer(item)), dtype=torch.long) for item in raw_text_iter]
-    return torch.cat(tuple(filter(lambda t: t.numel() > 0, data)))
-
 # train_iter was consumed by the process of building the vocab,
 # so we have to create it again
 train_iter, val_iter, test_iter = WikiText2()
-train_data = data_process(train_iter)
-val_data = data_process(val_iter)
-test_data = data_process(test_iter)
+train_data = data_process(train_iter, vocab, tokenizer)
+val_data = data_process(val_iter, vocab, tokenizer)
+test_data = data_process(test_iter, vocab, tokenizer)
 
 device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 
-def batchify(data, bsz):
-    """
-        Divides the data into bsz seperate sequences, removing extra elements that
-        wouldn't cleanly fit.
 
-        Args:
-            data: Tensor, shape [N]
-            bsz: int, batch size
-
-        Returns:
-            Tensor of shape [N // bsz, bsz]
-    """
-    seq_len = data.size(0) // bsz
-    data = data[:seq_len * bsz]
-    data = data.view(bsz, seq_len).t().contiguous()
-    return data.to(device)
 
 batch_size = 20
 eval_batch_size = 10
-train_data = batchify(train_data, batch_size)
-val_data = batchify(val_data, eval_batch_size)
-test_data = batchify(test_data, eval_batch_size)
+train_data = batchify(train_data, batch_size, device)
+val_data = batchify(val_data, eval_batch_size, device)
+test_data = batchify(test_data, eval_batch_size, device)
 
 ## Functions to generate input and target sequence
 bptt = 35
-def get_batch(source, i):
-    """
-    Args:
-        source: Tensor, shape [full_seq_len, batch_size]
-        i: int
-    Returns:
-        tuple (data, target), where data has shape [seq_len, batch_size] and
-        target has shape [seq_len * batch_size]
-    """
-    seq_len = min(bptt, len(source) - 1 - i)
-    data = source[i:i+seq_len]
-    target = source[i+1 : i+1+seq_len].reshape(-1)
-    return data,target
+
 
 ## Initiate an instance
 ntokens = len(vocab)  # size of vocabulary
@@ -102,7 +69,7 @@ def train(model):
 
     num_batches = len(train_data) // bptt
     for batch, i in enumerate(range(0, train_data.size(0)-1, bptt)):
-        data, targets = get_batch(train_data, i)
+        data, targets = get_batch(bptt, train_data, i)
         batch_size = data.size(0)
         if batch_size != bptt:
             src_mask = src_mask[:batch_size, :batch_size]
@@ -131,7 +98,7 @@ def evaluate(model, eval_data):
     src_mask = generate_square_subsequent_mask(bptt).to(device)
     with torch.no_grad():
         for i in range(0, eval_data.size(0)-1, bptt):
-            data, targets = get_batch(eval_data, i)
+            data, targets = get_batch(bptt, eval_data, i)
             batch_size = data.size(0)
             if batch_size != bptt:
                 src_mask = src_mask[:batch_size, :batch_size]

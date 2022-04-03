@@ -33,9 +33,9 @@ print(input_seq)
 def predict(model, input_seq):
         model.eval()
         src_mask = generate_square_subsequent_mask(len(input_seq)).to(device)
-        out = model(input_seq.to(device), src_mask.to(device))
-        
+        out = model(input_seq.to(device), src_mask.to(device)) 
         return out
+        
 print(seq)
 out = predict(model, input_seq)
 out = out.view(-1, ntokens)
