@@ -36,5 +36,4 @@ def get_batch(bptt, source, i):
     seq_len = min(bptt, len(source) - 1 - i)
     data = source[i:i+seq_len]
     target = source[i+1 : i+1+seq_len].reshape(-1)
-    print(data, target)
     return data,target
